@@ -1,0 +1,38 @@
+const assert = require('assert');
+const Rooster = require('../index');
+
+describe ('Rooster', () => {
+  describe('.announceDawn', () => {
+    it ('returns a rooster call', () => {
+        const expected = 'cocked-a-doodle-doo!';
+        const actual = Rooster.announceDawn();
+        assert.equal(expected, actual);
+      
+    });
+  });
+  describe('.timeAtDawn', () => {
+    it('returns its argument as a string', () => {
+      const input = 10
+      const expected = '10';
+      const actual =  Rooster.timeAtDawn(input);
+      assert.equal(expected, actual);
+    });
+
+    it ('thrwos an error if passed a number less than 0', () => {
+      const input = -4;
+      const expected = RangeError;
+
+      assert.throws (() => {
+        Rooster.timeAtDawn(input);
+      }, expected);
+    });
+    it ('throws an error if passed a number greater than 23', () => {
+      const input = 45;
+      const expected = RangeError;
+
+      assert.throws(() => {
+        Rooster.timeAtDawn(input);
+      }, expected);
+    });
+  });
+});
